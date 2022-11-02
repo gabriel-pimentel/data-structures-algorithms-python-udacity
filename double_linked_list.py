@@ -4,7 +4,7 @@ class Node:
         self.next = None
 
 
-class LinkedList:
+class DoubleLinkedList:
 
     def __init__(self):
         self.nodes = []
@@ -36,15 +36,34 @@ class LinkedList:
 
             self.nodes[0].next = self.nodes[1]
 
+    def pop_right(self):
+        if self.size == 0:
+            print('Already Empty')
 
+        else:
+            self.nodes.pop()
+            self.nodes[-1].next = None
+            self.size -= 1
 
+    def pop_left(self):
+        if self.size == 0:
+            print('Already Empty')
+
+        else:
+            for i in range(self.size - 1):
+                temp = self.nodes[i]
+                self.nodes[i] = self.nodes[i+1]
+                self.nodes[i+1] = temp
+
+            self.nodes.pop()
+            self.size -= 1
 
 
 a = Node(3)
 b = Node(1)
 c = Node(4)
 
-l = LinkedList()
+l = DoubleLinkedList()
 l.add_right(a)
 print(l)
 l.add_right(b)
@@ -52,4 +71,8 @@ print(l)
 l.add_right(c)
 print(l)
 l.add_left(Node(6))
+print(l)
+l.pop_right()
+print(l)
+l.pop_left()
 print(l)
