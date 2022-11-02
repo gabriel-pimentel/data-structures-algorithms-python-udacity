@@ -10,5 +10,4 @@ def show_excitement():
     # Your code goes here!
     return "I am super excited for this course! "
 
-
 print(f'{show_excitement() * 5} ')
